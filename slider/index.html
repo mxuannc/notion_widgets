@@ -36,48 +36,41 @@ body {
   height: 100%;
   opacity: 0;
   transition: opacity 0.4s ease-in-out;
+  background-size: contain;  /* 保持圖片比例，並調整大小 */
+  background-position: center; /* 圖片居中顯示 */
 }
 
 .slide.current {
   opacity: 1;
 }
 
-
 .slide:first-child {
-  background: url("1.png") no-repeat
-    center top/cover;
+  background: url("1.png") no-repeat center center;
 }
 
 .slide:nth-child(2) {
-  background: url("2.png") no-repeat
-    center top/cover;
+  background: url("2.png") no-repeat center center;
 }
 
 .slide:nth-child(3) {
-  background: url("3.png") no-repeat
-    center top/cover;
-}
-  
-.slide:nth-child(4) {
-  background: url("4.png") no-repeat
-    center top/cover;
-}
-  
-.slide:nth-child(5) {
-  background: url("5.png") no-repeat
-    center top/cover;
-}
-  
-.slide:nth-child(6) {
-  background: url("6.png") no-repeat
-    center top/cover;
-}
-  
-.slide:nth-child(7) {
-  background: url("7.png") no-repeat
-    center top/cover;
+  background: url("3.png") no-repeat center center;
 }
 
+.slide:nth-child(4) {
+  background: url("4.png") no-repeat center center;
+}
+
+.slide:nth-child(5) {
+  background: url("5.png") no-repeat center center;
+}
+
+.slide:nth-child(6) {
+  background: url("6.png") no-repeat center center;
+}
+
+.slide:nth-child(7) {
+  background: url("7.png") no-repeat center center;
+}
 
 .buttons button#prev {
   position: absolute;
@@ -136,7 +129,6 @@ body {
     <div class="slide"></div>
     <div class="slide"></div>
     <div class="slide"></div>
-
   </div>
   <div class="buttons">
     <button id="prev"><i class="fas fa-arrow-left"></i></button>
