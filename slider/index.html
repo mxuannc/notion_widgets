@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsive Image Slider</title>
   <style>
+    /* 全域樣式 */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       background-color: #362a2b;
-      color: #e5ebf3;
     }
 
+    /* 輪播容器 */
     .slider {
       position: relative;
-      width: 100vw;
-      aspect-ratio: 16 / 9; /* 確保比例 */
+      width: 100%;
+      max-width: 100vw; /* 適配所有裝置寬度 */
       overflow: hidden;
+      aspect-ratio: 16 / 9; /* 確保 16:9 比例 */
     }
 
+    /* 單一圖片樣式 */
     .slide {
       position: absolute;
       top: 0;
@@ -32,34 +38,31 @@
       height: 100%;
       opacity: 0;
       transition: opacity 0.4s ease-in-out;
+      background-size: cover;
+      background-position: center;
     }
 
     .slide.current {
       opacity: 1;
     }
 
-    .slide:first-child {
-      background: url("1.png") no-repeat center / cover;
-    }
-
-    .slide:nth-child(2) {
-      background: url("2.png") no-repeat center / cover;
-    }
-
-    .slide:nth-child(3) {
-      background: url("3.png") no-repeat center / cover;
-    }
-
+    /* 按鈕樣式 */
     .buttons button {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background-color: transparent;
+      background: transparent;
       border: 2px solid #e5ebf3;
       color: #e5ebf3;
       cursor: pointer;
       padding: 10px;
       border-radius: 50%;
+      z-index: 10;
+    }
+
+    .buttons button:hover {
+      background-color: #e5ebf3;
+      color: #362a2b;
     }
 
     .buttons button#prev {
@@ -69,30 +72,22 @@
     .buttons button#next {
       right: 10px;
     }
-
-    .buttons button:hover {
-      background-color: #e5ebf3;
-      color: #362a2b;
-    }
   </style>
 </head>
-
 <body>
   <div class="slider">
-    <div class="slide current"></div>
-    <div class="slide"></div>
-    <div class="slide"></div>
+    <div class="slide current" style="background-image: url('1.png');"></div>
+    <div class="slide" style="background-image: url('2.png');"></div>
+    <div class="slide" style="background-image: url('3.png');"></div>
   </div>
   <div class="buttons">
     <button id="prev">&lt;</button>
     <button id="next">&gt;</button>
   </div>
-
   <script>
     const slides = document.querySelectorAll(".slide");
     const nextButton = document.getElementById("next");
     const prevButton = document.getElementById("prev");
-
     let currentIndex = 0;
 
     function showSlide(index) {
@@ -111,12 +106,10 @@
       showSlide(currentIndex);
     });
 
-    // Auto-slide (optional)
     setInterval(() => {
       currentIndex = (currentIndex + 1) % slides.length;
       showSlide(currentIndex);
     }, 5000);
   </script>
 </body>
-
 </html>
