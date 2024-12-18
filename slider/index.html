@@ -79,6 +79,10 @@
     <div class="slide current" style="background-image: url('1.png');"></div>
     <div class="slide" style="background-image: url('2.png');"></div>
     <div class="slide" style="background-image: url('3.png');"></div>
+    <div class="slide" style="background-image: url('4.png');"></div>
+    <div class="slide" style="background-image: url('5.png');"></div>
+    <div class="slide" style="background-image: url('6.png');"></div>
+    <div class="slide" style="background-image: url('7.png');"></div>
   </div>
   <div class="buttons">
     <button id="prev">&lt;</button>
@@ -90,22 +94,26 @@
     const prevButton = document.getElementById("prev");
     let currentIndex = 0;
 
+    // 顯示特定索引的幻燈片
     function showSlide(index) {
       slides.forEach((slide, i) => {
         slide.classList.toggle("current", i === index);
       });
     }
 
+    // 下一張
     nextButton.addEventListener("click", () => {
       currentIndex = (currentIndex + 1) % slides.length;
       showSlide(currentIndex);
     });
 
+    // 上一張
     prevButton.addEventListener("click", () => {
       currentIndex = (currentIndex - 1 + slides.length) % slides.length;
       showSlide(currentIndex);
     });
 
+    // 自動輪播
     setInterval(() => {
       currentIndex = (currentIndex + 1) % slides.length;
       showSlide(currentIndex);
